@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% if title %}
+        <title>{{ title }} - SongReWriter</title>
+        {% else %}
+        <title>SongReWriter</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            <a href="{{ url_for('index') }}">SongReWriter</a>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+    {% block content %}
+
+    {% if transformed_lyrics %}
+
+    <h2>This is your converted song:</h2>
+
+    {{transformed_lyrics|safe}}
+
+        {% if lyrics %}
+
+        <h2>This is the original song:</h2>
+
+        {{ lyrics|safe }}
+
+        {% endif %}
+
+    {% else %}
+
+    <h2>There was an error
+        <br>
+        <a href="{{ url_for('index') }}">
+            go back
+        </a>
+    </h2>
+
+    {% endif %}
+
+    {% endblock %}

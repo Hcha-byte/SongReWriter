@@ -3,45 +3,23 @@ import os
 
 import lyricsgenius
 
-# TRANSFORMATION_RULES = {
-#     "scientific": {
-#         r"\bsun\b": "solar radiation source",
-#         r"\bwind\b": "atmospheric displacement",
-#         r"\brain\b": "precipitation event",
-#         r"\bstars\b": "celestial fusion reactors",
-#         r"\bheartbeat\b": "cardiac cycle frequency"
-#     },
-#     "bureaucratic": {
-#         r"\bI love you\b": "In accordance with previously established emotional parameters, I hereby declare a sustained affective attachment, contingent upon future developments.",
-#         r"\bwe need to talk\b": "A formal discourse regarding the status of our association is required.",
-#         r"\bleave me alone\b": "Cease and desist all unsolicited interactions immediately."
-#     },
-#     "engineering": {
-#         r"\bheart\b": "emotional processing unit",
-#         r"\btears\b": "emotional overflow event",
-#         r"\bmemory\b": "data retention unit",
-#         r"\bthinking\b": "parallel processing operation",
-#         r"\blosing you\b": "critical data loss detected"
-#     },
-#     "military": {
-#         r"\bfight\b": "engagement operation",
-#         r"\blove\b": "strategic alliance",
-#         r"\bretreat\b": "tactical withdrawal",
-#         r"\bvictory\b": "mission success",
-#         r"\bdefeat\b": "operational failure"
-#     },
-#     "medical": {
-#         r"\bhappy\b": "elevated serotonin levels detected",
-#         r"\bsad\b": "neurotransmitter depletion observed",
-#         r"\bheartbeat\b": "cardiac rhythmic pulsation",
-#         r"\bcrying\b": "lacrimal gland hyperactivity",
-#         r"\bnervous\b": "increased sympathetic nervous system activation"
-#     }
-# }
 
-genius = lyricsgenius.Genius("ArhWQHRhrvvM9i1P4YzpnDeTaucektN2wncx06117nWM-jd9AbsVdh96R88VRhB8")
+genius = lyricsgenius.Genius(os.getenv("GENIUS_API_KEY"), timeout=15)
 
 from together import Together
+
+example = """[Chorus]
+Here comes the sun (Doo-d-doo-doo)
+Here comes the sun
+And I say, "It's alright"
+
+[Verse 1]
+Little darling
+It's been a long, cold, lonely winter
+Little darling
+It feels like years since it's been here
+"""
+
 
 # Initialize the client
 client = Together()
@@ -49,13 +27,13 @@ client = Together()
 def transform_to_technical_prose(lyrics, mode):
 	api_key = os.getenv("TOGETHER_API_KEY")
 	# Create the prompt for the AI model
-	prompt = f"Rewrite this in {mode} technical prose:\n\n{lyrics}"
+	prompt = [{"role": "user", "content": f"Rewrite this in {str(mode)} technical prose while preserving verse format and putting an end-line at the end of each verse (exanple: {str(example)}):\n\n{str(lyrics)}"}]
 
 	try:
 		# Use the `together` client to make the API request
 		response = client.chat.completions.create(
 			model="meta-llama/Llama-3.3-70B-Instruct-Turbo",  # Use the correct model
-			messages=[{"role": "user", "content": prompt}],
+			messages=[{"role": "user", "content": str(prompt)}],
 		)
 
 		# Extract and return the AI-generated content

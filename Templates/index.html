@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+    {% block content %}
+    <h2>Convert Song Lyrics into Technical Prose</h2>
+
+    <form action="/lyrics" method="post">
+        <label for="title">Song Title:</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label for="artist">Artist:</label>
+        <input type="text" id="artist" name="artist" required>
+        <br>
+        <label for="mode">Transformation Mode:</label>
+        <select id="mode" name="mode">
+            <option value="scientific">Scientific</option>
+            <option value="bureaucratic">Bureaucratic</option>
+            <option value="engineering">Engineering</option>
+            <option value="military">Military</option>
+            <option value="medical">Medical</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    {% endblock %}
