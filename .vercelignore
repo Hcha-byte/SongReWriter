@@ -1,7 +1,0 @@
-.venv1/
-__pycache__/
-*.pyc
-*.pyo
-README.md
-.gitignore
-.idea/
