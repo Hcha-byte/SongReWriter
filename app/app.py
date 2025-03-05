@@ -1,5 +1,5 @@
 import flask
-from flask import request
+from flask import request, redirect, url_for
 
 from main import get_lyrics, transform_to_technical_prose
 
