@@ -8,7 +8,7 @@ app = flask.Flask(__name__)
 @app.route("/")
 @app.route("/index")
 def index():
-	return flask.render_template("index.html", title="Home")
+	return flask.render_template("Templates/index.html", title="Home")
 
 @app.route("/lyrics", methods=['POST','GET'])
 def lyrics():
@@ -20,4 +20,4 @@ def lyrics():
 
 	transformed_lyrics = transform_to_technical_prose(lyrics, mode)
 
-	return flask.render_template("lyrics.html", lyrics=lyrics, transformed_lyrics=transformed_lyrics, title="Lyrics")
+	return flask.render_template("Templates/lyrics.html", lyrics=lyrics, transformed_lyrics=transformed_lyrics, title="Lyrics")
