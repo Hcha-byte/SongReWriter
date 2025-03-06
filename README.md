@@ -86,11 +86,11 @@ main.exe --input "Here comes the sun (Doo-d-doo-doo)\nHere comes the sun\nAnd I 
 To view help information:
 
 ```bash
-python3 main.py --help
+python3 main.py --CLI_HELP
 ```
 OR
 ```bash
-main.exe --help
+main.exe --CLI_HELP
 ```
 
 ```text
