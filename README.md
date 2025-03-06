@@ -143,4 +143,4 @@ MIT License © 2025
 
 Created by Hcha-byte
 
-Version: 1.1.0
+Version: 1.1.1

@@ -6,6 +6,8 @@ from app.functions import get_lyrics, transform_to_technical_prose
 
 CONFIG_FILE = "config.json"
 
+__version__ = "1.1.1"
+
 ASCII_ART = r'''
 SongReWriter
 
@@ -31,23 +33,44 @@ def load_config():
 	else:
 		return {"first_run": True, "show_banner": True}
 
+
 def save_config(config):
 	"""Saves configuration settings to the config file."""
 	with open(CONFIG_FILE, "w") as file:
 		# noinspection PyTypeChecker
 		json.dump(config, file, indent=4)
 
+
 # noinspection PyUnboundLocalVariable
-def main():
-	parser = argparse.ArgumentParser(description="Convert song lyrics into technical prose.")
+def main() :
+	"""
+	Converts song lyrics into technical prose.
+
+	Parses command-line arguments for input mode, song title, artist name, and transformation mode.
+	Loads configuration from a file and saves it after each run.
+	Shows an ASCII art banner if it's the first run or if enabled.
+	Retrieves song lyrics from Genius if a title and artist are provided, or uses manual input.
+	Converts the lyrics into technical prose using the selected mode.
+	Prints the transformed lyrics.
+
+	Args:
+		--title, -t: Song title for automatic generation
+		--artist, -a: Artist name for automatic generation
+		--input, -i: Provide song lyrics manually
+		--mode, -m: Select transformation mode [default: scientific] from the following: scientific, bureaucratic, engineering, military, medical
+		--no-banner: Disable ASCII art banner
+		--show-banner: Enable ASCII art banner
+	"""
+	parser = argparse.ArgumentParser(description=f"Convert song lyrics into technical prose. Version {__version__}")
 	parser.add_argument("--title", "-t", type=str, help="Song title for automatic generation")
 	parser.add_argument("--artist", "-a", type=str, help="Artist name for automatic generation")
 	parser.add_argument("--input", "-i", type=str, help="Manually enter song lyrics")
 	parser.add_argument("--mode", "-m", type=str,
-						choices=["scientific", "bureaucratic", "engineering", "military", "medical"],
-						default="scientific", help="Select transformation mode")
+	                    choices=["scientific", "bureaucratic", "engineering", "military", "medical"],
+	                    default="scientific", help="Select transformation mode")
 	parser.add_argument("--no-banner", action="store_true", help="Disable ASCII art banner")
 	parser.add_argument("--show-banner", action="store_true", help="Enable ASCII art banner")
+	parser.add_argument("--version", "-v", action="version", version=f"%(prog)s {__version__}")
 
 	args = parser.parse_args()
 
@@ -66,7 +89,6 @@ def main():
 	# Mark first run as completed
 	config["first_run"] = False
 	save_config(config)
-
 
 	if args.input:
 		lyrics = args.input
