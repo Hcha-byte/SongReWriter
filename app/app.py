@@ -1,7 +1,9 @@
-import flask
-from flask import request, redirect, url_for
+import os
 
-from main import get_lyrics, transform_to_technical_prose
+import flask
+from flask import request, send_from_directory
+
+from app.functions import get_lyrics, transform_to_technical_prose
 
 app = flask.Flask(__name__)
 
@@ -21,3 +23,9 @@ def lyrics():
 	transformed_lyrics = transform_to_technical_prose(lyrics, mode)
 
 	return flask.render_template("lyrics.html", lyrics=lyrics, transformed_lyrics=transformed_lyrics, title="Lyrics")
+
+
+@app.route('/favicon.ico')
+def favicon():
+	return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
