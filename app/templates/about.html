@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+<h1 id="songrewriter">SongReWriter</h1>
+<img src="{{ url_for('static', filename='logo-big.jpeg') }}" width="256" height="256" alt="SongReWriter">
+<h2 id="cli-tool">CLI Tool</h2>
+<h3 id="important-note">Important Note:</h3>
+<p>You will need to set the environment variable <code>GENIUS_API_KEY</code> to use the <code>--title</code> and <code>--artist</code> options. You will also need to set the environment variable <code>TOGETHER_API_KEY</code> to use the CLI.</p>
+<h3 id="overview">Overview</h3>
+<p>SongReWriter CLI is a command-line tool designed to convert song lyrics into various styles of technical prose, such as scientific, bureaucratic, engineering, military, and medical.</p>
+<h3 id="installation">Installation</h3>
+<h4 id="option-1-with-python-3-installed">Option 1 - With Python 3 installed</h4>
+<p>Ensure you have Python 3 installed. You can clone the repository and install the required dependencies using pip:</p>
+<pre><code class="language-bash">git clone https://github.com/Hcha-byte/SongReWriter.git
+cd SongReWriter
+pip install -r requirements.txt
+</code></pre>
+<h4 id="option-2-using-a-exe-file">Option 2 - Using a .exe file</h4>
+<p>You can download the .exe file from <a href="https://github.com/Hcha-byte/SongReWriter/releases/latest">here</a> and run it directly from your command prompt.</p>
+<h3 id="usage">Usage</h3>
+<p>Run the following command to start the tool:</p>
+<pre><code class="language-bash">python3 main.py [options]
+</code></pre>
+<p>OR</p>
+<pre><code class="language-bash">main.exe [options]
+</code></pre>
+<h3 id="options">Options</h3>
+<ul>
+<li>
+<p><code>--title, -t</code>: Specify the song title for automatic generation. This option requires the <code>--artist</code> option to be used as well.</p>
+</li>
+<li>
+<p><code>--artist, -a</code>: Specify the artist name for automatic generation. This option requires the <code>--title</code> option to be used as well.</p>
+</li>
+<li>
+<p><code>--input, -i</code>: Provide the song lyrics manually instead of fetching them automatically.</p>
+</li>
+<li>
+<p><code>--mode, -m</code>: Select the transformation mode. Options are: <code>scientific</code>, <code>bureaucratic</code>, <code>engineering</code>, <code>military</code>, <code>medical</code>. Default is <code>scientific</code>.</p>
+</li>
+<li>
+<p><code>--help, -h</code>: Display the help message.</p>
+</li>
+</ul>
+<p>Note:
+Automatically generated song lyrics are fetched from Genius.com.</p>
+<h3 id="examples">Examples</h3>
+<p>Convert a song by providing the title and artist:</p>
+<pre><code class="language-bash">python3 main.py --title &quot;Song Title&quot; --artist &quot;Artist Name&quot;
+</code></pre>
+<p>OR</p>
+<pre><code class="language-bash">main.exe --title &quot;Song Title&quot; --artist &quot;Artist Name&quot;
+</code></pre>
+<p>Convert song lyrics provided manually:</p>
+<pre><code class="language-bash">python3 main.py --input &quot;Here comes the sun (Doo-d-doo-doo)\nHere comes the sun\nAnd I say, \&quot;It's alright\&quot;&quot;
+</code></pre>
+<p>OR</p>
+<pre><code class="language-bash">main.exe --input &quot;Here comes the sun (Doo-d-doo-doo)\nHere comes the sun\nAnd I say, \&quot;It's alright\&quot;&quot;
+</code></pre>
+<h3 id="help">Help</h3>
+<p>To view help information:</p>
+<pre><code class="language-bash">python3 main.py --help
+</code></pre>
+<p>OR</p>
+<pre><code class="language-bash">main.exe --help
+</code></pre>
+<pre><code class="language-text">SongReWriter
+
+Convert song lyrics into technical prose
+
+Usage: python main.py [-h] [-t TITLE] [-a ARTIST] [-i INPUT] [-m MODE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t TITLE, --title TITLE
+                        Song title for automatic generation
+  -a ARTIST, --artist ARTIST
+                        Artist name for automatic generation
+  -i INPUT, --input INPUT
+                        Manually enter song lyrics
+  -m MODE, --mode MODE
+                        Select transformation mode [default: scientific] from the following: scientific, bureaucratic, engineering, military, medical
+
+Examples:
+  python main.py --title &quot;Song Title&quot; --artist &quot;Artist Name&quot;
+  python main.py --input &quot;Here comes the sun (Doo-d-doo-doo)\nHere comes the sun\nAnd I say, \&quot;It's alright\&quot;&quot;
+
+----------------------------------------------------------------------------
+</code></pre>
+<h2 id="gui-tool">GUI Tool</h2>
+<p>The GUI tool is located at <code>app/</code> and can be run with:</p>
+<pre><code class="language-bash">python3 -m flask run
+</code></pre>
+<p>OR
+You can go to it <a href="https://songrewriter-production.up.railway.app">here</a></p>
+<h2 id="features">Features</h2>
+<h3 id="gui-tool_1">GUI Tool</h3>
+<ul>
+<li>Convert song lyrics into various styles of technical prose, such as scientific, bureaucratic, engineering, military, and medical. -&gt; More modes to coming</li>
+<li>Automatically fetch song lyrics from Genius.com.</li>
+<li>View the original lyrics and the transformed lyrics side by side.</li>
+</ul>
+<h3 id="cli-tool_1">CLI Tool</h3>
+<ul>
+<li>Convert song lyrics into various styles of technical prose, such as scientific, bureaucratic, engineering, military, and medical.</li>
+<li>Automatically fetch song lyrics from Genius.com.</li>
+<li>Manually enter song lyrics.</li>
+<li>Better formatting of output</li>
+</ul>
+<hr />
+<p>MIT License (c) 2025</p>
+<p>Created by Hcha-byte</p>
+<p>Version: 1.1.0</p>
+</body>
+{% endblock %}

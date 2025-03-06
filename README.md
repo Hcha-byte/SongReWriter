@@ -1,5 +1,6 @@
 # SongReWriter
 
+![SongReWriter](app/static/logo-big.jpeg)
 ## CLI Tool
 
 ### Important Note:
