@@ -246,3 +246,4 @@ fabric.properties
 .DS_Store!
 /build/
 /dist/
+.DS_Store
