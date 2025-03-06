@@ -247,4 +247,4 @@ fabric.properties
 /build/
 /dist/
 .DS_Store
-!/config.json
+config.json
