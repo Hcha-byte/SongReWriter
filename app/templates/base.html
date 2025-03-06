@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
 <html lang="en">
     <head>
         {% if title %}
@@ -7,13 +8,14 @@
         <title>SongReWriter</title>
         {% endif %}
         <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <div>
             <a href="{{ url_for('index') }}">
                 <img src="{{ url_for('static', filename='favicon.ico') }}" width="64" height="64" alt="SongReWriter">
             </a>
-            <a style="font-family:  comic sans ms;" href="{{ url_for('about') }}">  About</a>
+            <a href="{{ url_for('about') }}">  About</a>
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
