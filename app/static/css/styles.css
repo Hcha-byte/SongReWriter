@@ -3,7 +3,7 @@ body {
   font-family: comic sans ms;
   margin: 0; /* remove default margin */
   padding: 0; /* remove default padding */
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 /* add some basic styling for headings */
@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: #333; /* dark gray */
   margin-bottom: 10px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 /* style links */
@@ -29,7 +29,7 @@ p {
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 20px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 /* style images */
@@ -37,13 +37,13 @@ img {
   max-width: 100%;
   height: auto;
   margin: 10px 0;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 /* add some basic styling for forms */
 form {
   margin-top: 20px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 label {
